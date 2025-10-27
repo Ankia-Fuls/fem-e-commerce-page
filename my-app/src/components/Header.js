@@ -1,8 +1,16 @@
-
-
+import React, { useState, useEffect } from 'react';
 
 
 function Header() {
+
+    const [openButtonExpanded, setOpenButtonExpanded] = useState(false);
+
+    const openMenu = () => {
+        setOpenButtonExpanded(true);
+    }
+
+
+
     return (
         <header className="navbar">
             <img src="./images/logo.svg" alt="Stylized text saying 'Sneackers', the company logo."></img>
@@ -11,15 +19,15 @@ function Header() {
                 <span id="nav-label" hidden>Navigation</span>
 
                 {/* The button for when the mobile menu is open */}
-                <button id="btnOpen" className="navbar__open" aria-expanded="false" aria-labelledby="nav-label">
-                    <img src="./images/icon-close.svg" alt="" />
+                <button id="btnOpen" className="navbar__open" aria-expanded={openButtonExpanded} aria-labelledby="nav-label" onClick={openMenu}>
+                    <img src="./images/icon-menu.svg" alt="" />
                 </button>
 
                 {/* Menu, shown for both mobile and desktop */}
                 <div className="navbar__menu" role="dialog" aria-labelledby="nav-label">
                     {/* Button hidden for desktop, shown on mobile */}
                     <button id="btnClose" className="navbar__close" aria-label="Close">
-                        <img src="./images/icon-menu.svg" alt="" />
+                        <img src="./images/icon-close.svg" alt="" />
                     </button>
 
                     {/* Menu, hidden for mobile until opened, shown for desktop */}
