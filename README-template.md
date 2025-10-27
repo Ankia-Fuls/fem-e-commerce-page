@@ -95,10 +95,8 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Coder Coder YouTube video](https://www.youtube.com/watch?v=pBv7igaxfQE) - This video guided me along how to create accessible hamburger menus
+- [MatchMedia for ReactJS](https://medium.com/better-programming/using-window-matchmedia-in-react-8116eada2588) - This helped me adapt the way match media worked in basic JS to react to update the code based on screen width.
 
 ## Author
 

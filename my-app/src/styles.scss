@@ -121,7 +121,7 @@ body {
             top: 0;
             left: 0;
 
-            translate: 100vw 0; //slide the menu in from off screen
+            translate: -100vw 0; //slide the menu in from off screen
             transition: translate 0.5s ease-in-out;
 
             color: var(--very-dark-blue);

@@ -1,8 +1,7 @@
 # Menu
 
-- Hamburger menu
-- Reference prev project
-- Keep in mind inert and focus for accessibility
+- Add the inert to the main page using redux later.
+- Check die open en close button focus
 
 
 # Lightbox

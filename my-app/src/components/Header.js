@@ -4,11 +4,63 @@ import React, { useState, useEffect } from 'react';
 function Header() {
 
     const [openButtonExpanded, setOpenButtonExpanded] = useState(false);
+    const [navMenuInert, setNavMenuInert] = useState(false);
+    const [menuTransition, setMenuTransition] = useState(true);
+
+    const closeMenuBtn = document.getElementById("btnClose");
+    const openMenuBtn = document.getElementById("btnOpen");
 
     const openMenu = () => {
         setOpenButtonExpanded(true);
+        setNavMenuInert(false);
+        setMenuTransition(false);
+
+        closeMenuBtn.focus();
+
     }
 
+    const closeMenu = () => {
+        setOpenButtonExpanded(false);
+        setNavMenuInert(true);
+
+        setTimeout(() => {
+            setMenuTransition(true);
+        }, 500);
+
+        openMenuBtn.focus();
+    }
+
+
+    //SCREEN SIZE WATCHER, UPDATES
+    const [isNarrowScreen, setIsNarrowScreen] = useState(false);
+
+    useEffect(() => {
+        // set initial value
+        const mediaWatcher = window.matchMedia("(width<600px)")
+        setIsNarrowScreen(mediaWatcher.matches);
+
+        //watch for updates
+        function updateIsNarrowScreen(e) {
+            setIsNarrowScreen(e.matches);
+        }
+        mediaWatcher.addEventListener('change', updateIsNarrowScreen)
+
+        // clean up after ourselves
+        return function cleanup() {
+            mediaWatcher.removeEventListener('change', updateIsNarrowScreen)
+        }
+    });
+
+    useEffect(() => {
+        if (isNarrowScreen) {
+            setNavMenuInert(true);
+            setMenuTransition(true);
+        }
+        else {
+            setNavMenuInert(false);
+        }
+    }
+        , [isNarrowScreen])
 
 
     return (
@@ -24,9 +76,9 @@ function Header() {
                 </button>
 
                 {/* Menu, shown for both mobile and desktop */}
-                <div className="navbar__menu" role="dialog" aria-labelledby="nav-label">
+                <div className="navbar__menu" role="dialog" aria-labelledby="nav-label" inert={navMenuInert} style={{ transition: menuTransition ? "none" : "" }}>
                     {/* Button hidden for desktop, shown on mobile */}
-                    <button id="btnClose" className="navbar__close" aria-label="Close">
+                    <button id="btnClose" className="navbar__close" aria-label="Close" onClick={closeMenu}>
                         <img src="./images/icon-close.svg" alt="" />
                     </button>
 
