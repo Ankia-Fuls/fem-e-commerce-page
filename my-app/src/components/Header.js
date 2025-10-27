@@ -24,11 +24,11 @@ function Header() {
 
                     {/* Menu, hidden for mobile until opened, shown for desktop */}
                     <ul class="navbar__links">
-                        <li class="navbar__item"><a href="" class="navbar__link">Collections</a></li>
-                        <li class="navbar__item"><a href="" class="navbar__link">Men</a></li>
-                        <li class="navbar__item"><a href="" class="navbar__link">Women</a></li>
-                        <li class="navbar__item"><a href="" class="navbar__link">About</a></li>
-                        <li class="navbar__item"><a href="" class="navbar__link">Contact</a></li>
+                        <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Collections</a></li>
+                        <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Men</a></li>
+                        <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Women</a></li>
+                        <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">About</a></li>
+                        <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Contact</a></li>
                     </ul>
                 </div>
             </nav>

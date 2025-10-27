@@ -13,6 +13,9 @@
     --attribution: hsl(228, 45%, 44%);
 }
 
+$med: 600px;
+$med-lower: 599px;
+
 *,
 html,
 body {
@@ -51,6 +54,113 @@ body {
     padding-block: 0.625rem;
     gap: 2rem;
 
+    button {
+        // clear button styling
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+    nav button {
+        @media only screen and (min-width: $med) {
+            //desktop
+            display: none;
+        }
+    }
+
+    // open navbar menu button
+    &__open {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    // animation of menu opening
+    &__open[aria-expanded="true"] {
+        +.navbar__menu {
+            // if the button is set to expanded, change the navbar__menu
+            translate: 0;
+        }
+
+        @media (prefers-reduced-motion) {
+            opacity: 1;
+        }
+    }
+
+    // menu close button
+    &__close {
+        display: block;
+        margin-inline-start: auto; //aligns the X to the right
+        margin-block-end: 5rem; //moves links down a bit
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        img {
+            width: 2rem;
+        }
+    }
+
+    //entire menu
+    &__menu {
+        z-index: 1;
+
+        @media only screen and (max-width: $med-lower) {
+            //mobile
+            position: fixed; //fixes position, removes from flow, parent element effectively entire page
+            padding: 1.5rem;
+            background-color: var(--light-grayish-blue);
+
+            width: 50vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+
+            translate: 100vw 0; //slide the menu in from off screen
+            transition: translate 0.5s ease-in-out;
+
+            color: var(--very-dark-blue);
+        }
+
+        @media only screen and (max-width: $med-lower) and (prefers-reduced-motion) {
+            translate: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+    }
+
+    //links collection
+    &__links {
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        flex-direction: column; //for mobile
+        align-items: left;
+        gap: 1.7rem;
+
+        @media only screen and (min-width: $med) {
+            flex-direction: row;
+            gap: 2.6rem;
+        }
+    }
+
+    &__item {
+        list-style-type: none;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: inherit;
+        font-size: 1.15rem;
+    }
+
     &__personal {
         margin-left: auto;
         display: flex;
@@ -58,14 +168,7 @@ body {
         align-items: center;
     }
 
-    &__cart-btn {
-        border: none;
-        background-color: inherit;
-    }
-
     &__profile {
-        border: none;
-        background-color: inherit;
         width: 3.125rem;
         aspect-ratio: 1 / 1;
     }
