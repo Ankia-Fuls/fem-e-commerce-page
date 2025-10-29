@@ -51,17 +51,21 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    padding-block: 0.625rem;
+    padding: 1.4375rem;
     gap: 2rem;
 
     &__container {
         display: flex;
         flex-direction: row-reverse;
+        gap: 0.875rem;
 
         @media only screen and (min-width: $med) {
             flex-direction: row;
         }
+    }
 
+    &__logo {
+        height: 100%;
     }
 
     button {
@@ -174,12 +178,20 @@ body {
     &__personal {
         margin-left: auto;
         display: flex;
-        gap: 2.875rem;
+        gap: 1.25rem;
         align-items: center;
+
+        @media only screen and (min-width: $med) {
+            gap: 2.875rem;
+        }
     }
 
     &__profile {
-        width: 3.125rem;
+        width: 1.5625rem;
         aspect-ratio: 1 / 1;
+
+        @media only screen and (min-width: $med) {
+            width: 3.125rem;
+        }
     }
 }

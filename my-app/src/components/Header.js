@@ -67,7 +67,7 @@ function Header() {
         <header className="navbar">
             <nav>
                 <div className='navbar__container'>
-                    <img src="./images/logo.svg" alt="Stylized text saying 'Sneackers', the company logo."></img>
+                    <img src="./images/logo.svg" alt="Stylized text saying 'Sneackers', the company logo." className='navbar__logo'></img>
 
                     <span id="nav-label" hidden>Navigation</span>
 
