@@ -54,6 +54,16 @@ body {
     padding-block: 0.625rem;
     gap: 2rem;
 
+    &__container {
+        display: flex;
+        flex-direction: row-reverse;
+
+        @media only screen and (min-width: $med) {
+            flex-direction: row;
+        }
+
+    }
+
     button {
         // clear button styling
         background: none;

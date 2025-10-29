@@ -65,32 +65,35 @@ function Header() {
 
     return (
         <header className="navbar">
-            <img src="./images/logo.svg" alt="Stylized text saying 'Sneackers', the company logo."></img>
-
             <nav>
-                <span id="nav-label" hidden>Navigation</span>
+                <div className='navbar__container'>
+                    <img src="./images/logo.svg" alt="Stylized text saying 'Sneackers', the company logo."></img>
 
-                {/* The button for when the mobile menu is open */}
-                <button id="btnOpen" className="navbar__open" aria-expanded={openButtonExpanded} aria-labelledby="nav-label" onClick={openMenu}>
-                    <img src="./images/icon-menu.svg" alt="" />
-                </button>
+                    <span id="nav-label" hidden>Navigation</span>
 
-                {/* Menu, shown for both mobile and desktop */}
-                <div className="navbar__menu" role="dialog" aria-labelledby="nav-label" inert={navMenuInert} style={{ transition: menuTransition ? "none" : "" }}>
-                    {/* Button hidden for desktop, shown on mobile */}
-                    <button id="btnClose" className="navbar__close" aria-label="Close" onClick={closeMenu}>
-                        <img src="./images/icon-close.svg" alt="" />
+                    {/* The button for when the mobile menu is open */}
+                    <button id="btnOpen" className="navbar__open" aria-expanded={openButtonExpanded} aria-labelledby="nav-label" onClick={openMenu}>
+                        <img src="./images/icon-menu.svg" alt="" />
                     </button>
 
-                    {/* Menu, hidden for mobile until opened, shown for desktop */}
-                    <ul class="navbar__links">
-                        <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Collections</a></li>
-                        <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Men</a></li>
-                        <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Women</a></li>
-                        <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">About</a></li>
-                        <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Contact</a></li>
-                    </ul>
+                    {/* Menu, shown for both mobile and desktop */}
+                    <div className="navbar__menu" role="dialog" aria-labelledby="nav-label" inert={navMenuInert} style={{ transition: menuTransition ? "none" : "" }}>
+                        {/* Button hidden for desktop, shown on mobile */}
+                        <button id="btnClose" className="navbar__close" aria-label="Close" onClick={closeMenu}>
+                            <img src="./images/icon-close.svg" alt="" />
+                        </button>
+
+                        {/* Menu, hidden for mobile until opened, shown for desktop */}
+                        <ul class="navbar__links">
+                            <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Collections</a></li>
+                            <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Men</a></li>
+                            <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Women</a></li>
+                            <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">About</a></li>
+                            <li class="navbar__item"><a href="https://github.com/Ankia-Fuls" class="navbar__link">Contact</a></li>
+                        </ul>
+                    </div>
                 </div>
+
             </nav>
 
             {/* Shopping cart and profile button */}
