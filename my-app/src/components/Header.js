@@ -74,6 +74,14 @@ function Header() {
 
     const [cartOpen, setCartOpen] = useState(false);
 
+    const toggleCart = () => {
+        if (cartOpen) {
+            setCartOpen(false);
+        }
+        else {
+            setCartOpen(true);
+        }
+    }
 
 
     return (
@@ -113,13 +121,13 @@ function Header() {
 
             {/* Shopping cart and profile button */}
             <div className="navbar__personal">
-                <button id="cart-btn-open" className="navbar__cart-btn" aria-label={cartOpen ? "Close shopping cart." : "Open shopping cart."}>
+                <button id="cart-btn-open" className="navbar__cart-btn" aria-label={cartOpen ? "Close shopping cart." : "Open shopping cart."} onClick={toggleCart}>
                     <img src="./images/icon-cart.svg" alt=""></img>
                 </button>
                 <button id="profile" className="navbar__profile" aria-label='Open user profile'>
                     <img src="./images/image-avatar.png" alt=""></img>
                 </button>
-                <div className='cart'>
+                <div className={cartOpen ? "cart cart--open" : "cart"}>
                     <h2 className='cart__heading'>Cart</h2>
                     <div className='cart__divider'></div>
                     <p className='cart__content'>Your cart is empty.</p>

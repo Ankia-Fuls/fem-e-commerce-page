@@ -203,6 +203,10 @@ body {
         @media only screen and (min-width: $med) {
             gap: 2.875rem;
         }
+
+        button:hover {
+            cursor: pointer;
+        }
     }
 
     &__profile {
@@ -254,7 +258,12 @@ body {
 
     // box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     box-shadow: var(--grayish-blue) 0px 50px 100px -20px, var(--dark-grayish-blue) 0px 30px 60px -30px;
-    // box-shadow: var(--grayish-blue) 0px 30px 100px 5px, var(--dark-grayish-blue) 0px 30px 60px -30px;
+
+    visibility: hidden;
+
+    &--open {
+        visibility: visible;
+    }
 
 
     @media only screen and (min-width: $med) {
