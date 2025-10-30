@@ -115,15 +115,15 @@ body {
     // menu close button
     &__close {
         display: block;
-        margin-inline-start: auto; //aligns the X to the right
-        margin-block-end: 5rem; //moves links down a bit
+        margin-inline-end: auto; //aligns the X to the right
+        margin-block-end: 3.125rem; //moves links down a bit
 
         &:hover {
             cursor: pointer;
         }
 
         img {
-            width: 2rem;
+            width: 0.9rem;
         }
     }
 
@@ -164,7 +164,7 @@ body {
         display: flex;
         flex-direction: column; //for mobile
         align-items: left;
-        gap: 1.7rem;
+        gap: 1.45rem;
 
         @media only screen and (min-width: $med) {
             flex-direction: row;
@@ -178,8 +178,15 @@ body {
 
     &__link {
         text-decoration: none;
-        color: var(--dark-grayish-blue);
-        font-size: 0.9rem;
+        color: var(--very-dark-blue);
+        font-weight: 700;
+        font-size: 1rem;
+
+        @media only screen and (min-width: $med) {
+            color: var(--dark-grayish-blue);
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
     }
 
     &__personal {
