@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 
 function Header() {
 
+    // START OF NAVBAR CODING
+
     const [openButtonExpanded, setOpenButtonExpanded] = useState(false);
     const [navMenuInert, setNavMenuInert] = useState(false);
     const [menuTransition, setMenuTransition] = useState(true);
@@ -68,6 +70,12 @@ function Header() {
         , [isNarrowScreen])
 
 
+    // START OF SHOPPING CART CODE
+
+    const [cartOpen, setCartOpen] = useState(false);
+
+
+
     return (
         <header className="navbar">
             <nav>
@@ -105,14 +113,19 @@ function Header() {
 
             {/* Shopping cart and profile button */}
             <div className="navbar__personal">
-                <button id="cart-btn-open" className="navbar__cart-btn">
+                <button id="cart-btn-open" className="navbar__cart-btn" aria-label={cartOpen ? "Close shopping cart." : "Open shopping cart."}>
                     <img src="./images/icon-cart.svg" alt=""></img>
                 </button>
-                <button id="profile" className="navbar__profile">
+                <button id="profile" className="navbar__profile" aria-label='Open user profile'>
                     <img src="./images/image-avatar.png" alt=""></img>
                 </button>
+                <div className='cart'>
+                    <h2 className='cart__heading'>Cart</h2>
+                    <div className='cart__divider'></div>
+                    <p className='cart__content'>Your cart is empty.</p>
+                </div>
             </div>
-        </header>
+        </header >
     );
 }
 

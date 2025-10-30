@@ -2,7 +2,7 @@
 
 - Add the inert to the main page using redux later.
 - Check die open en close button focus
-- Add grey out and hamburger styling
+
 
 # Lightbox
 
@@ -13,3 +13,4 @@
 
 - Use redux toolkit 
 - Keep tabbing and focus in mind when menu is open
+- Double check styling when css for main is in
