@@ -248,8 +248,22 @@ body {
     margin-inline: auto;
 
     background-color: var(--light-grayish-blue);
+    // background-color: var(--grayish-blue);
 
     border-radius: 0.4375rem;
+
+    // box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    box-shadow: var(--grayish-blue) 0px 50px 100px -20px, var(--dark-grayish-blue) 0px 30px 60px -30px;
+    // box-shadow: var(--grayish-blue) 0px 30px 100px 5px, var(--dark-grayish-blue) 0px 30px 60px -30px;
+
+
+    @media only screen and (min-width: $med) {
+        width: 22.5rem;
+        left: unset;
+        transform: unset;
+        right: 0;
+        top: 6.0625rem;
+    }
 
     &__heading {
         font-size: 0.9rem;
