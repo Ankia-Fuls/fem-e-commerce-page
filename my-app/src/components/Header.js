@@ -6,6 +6,7 @@ function Header() {
     const [openButtonExpanded, setOpenButtonExpanded] = useState(false);
     const [navMenuInert, setNavMenuInert] = useState(false);
     const [menuTransition, setMenuTransition] = useState(true);
+    const [greyOut, setGreyOut] = useState(false);
 
     const closeMenuBtn = document.getElementById("btnClose");
     const openMenuBtn = document.getElementById("btnOpen");
@@ -16,6 +17,8 @@ function Header() {
         setMenuTransition(false);
 
         closeMenuBtn.focus();
+
+        setGreyOut(true);
 
     }
 
@@ -28,6 +31,8 @@ function Header() {
         }, 500);
 
         openMenuBtn.focus();
+
+        setGreyOut(false);
     }
 
 
@@ -66,6 +71,8 @@ function Header() {
     return (
         <header className="navbar">
             <nav>
+                <div class={greyOut ? "grey-out grey-out--shown" : "grey-out"} aria-hidden="true"></div>
+
                 <div className='navbar__container'>
                     <img src="./images/logo.svg" alt="Stylized text saying 'Sneackers', the company logo." className='navbar__logo'></img>
 
