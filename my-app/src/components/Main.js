@@ -1,6 +1,7 @@
-function Main() {
+function Main({ pageInert }) {
+
     return (
-        <>
+        <main inert={pageInert}>
 
             Sneaker Company
 
@@ -16,7 +17,7 @@ function Main() {
             0
             Add to cart
 
-        </>
+        </main>
     );
 }
 

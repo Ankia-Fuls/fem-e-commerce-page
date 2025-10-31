@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-function Header() {
+function Header({ setPageInert }) {
 
     // START OF NAVBAR CODING
 
@@ -21,6 +21,7 @@ function Header() {
         closeMenuBtn.focus();
 
         setGreyOut(true);
+        setPageInert(true);
 
     }
 
@@ -35,6 +36,7 @@ function Header() {
         openMenuBtn.focus();
 
         setGreyOut(false);
+        setPageInert(false);
     }
 
 

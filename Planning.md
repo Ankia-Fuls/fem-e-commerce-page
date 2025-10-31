@@ -1,6 +1,4 @@
 # Menu
-
-- Add the inert to the main page using redux later.
 - Check die open en close button focus
 
 

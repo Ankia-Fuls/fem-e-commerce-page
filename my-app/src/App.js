@@ -1,12 +1,15 @@
 import './styles.scss';
 import Header from './components/Header';
 import Main from './components/Main';
+import { useState } from "react";
 
 function App() {
+  const [pageInert, setPageInert] = useState(false);
+
   return (
     <>
-      <Header></Header>
-      <Main></Main>
+      <Header setPageInert={setPageInert} />
+      <Main pageInert={pageInert}></Main>
 
 
       <footer className="attribution">
