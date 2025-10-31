@@ -5,8 +5,10 @@
 # Lightbox
 
 - Open a lightbox gallery by clicking on the large product image
-- Switch the large product image by clicking on the small thumbnail images
+- Check where to add inert in completed project.
 
+- Add buttons which are shown on mobile and hide the thumbnails in mobile
+- Doesn't look like lightbox is used for mobile at all, so do own design for fullscreen, mimic main design
 
 # Shopping cart
 

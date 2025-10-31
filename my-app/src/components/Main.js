@@ -28,17 +28,15 @@ function Main({ pageInert }) {
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
 
+    //Set large picture by clicking thumbnails
     const setChosenPicture = (e) => {
         const selectedId = e.target.id;
         setCurrentIndex(selectedId);
 
         const allThumbnails = e.target.parentNode.parentNode.children;
-
         for (let i = 0; i < 4; i++) {
-
             allThumbnails[i].children[0].className = "gallery__thumbnail";
         }
-
         e.target.className = "gallery__thumbnail gallery__thumbnail--chosen";
     }
 
