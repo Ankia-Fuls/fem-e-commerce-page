@@ -301,24 +301,45 @@ body {
     }
 }
 
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+
+
+    @media only screen and (min-width: $med) {
+        grid-template-columns: 1fr 1fr;
+        gap: 7.75rem;
+
+        padding: 5.625rem 2.9375rem;
+    }
+}
+
 
 // Lightbox
 
 .gallery {
     display: flex;
     flex-direction: column;
+    gap: 1.875rem;
 
     &__main {
         width: 100%;
         position: relative;
 
         height: 18.75rem;
-        // overflow: hidden;
+
+        @media only screen and (min-width: $med) {
+            height: unset;
+        }
 
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+
+            @media only screen and (min-width: $med) {
+                border-radius: 0.9375rem;
+            }
         }
     }
 
@@ -328,6 +349,16 @@ body {
         @media only screen and (min-width: $med) {
             display: flex;
             flex-direction: row;
+            gap: 2rem;
+
+        }
+
+        img {
+            @media only screen and (min-width: $med) {
+                border-radius: 0.625rem;
+                margin: 0;
+            }
+
         }
 
     }
@@ -335,7 +366,15 @@ body {
     &__thumbnail--chosen {
         opacity: 0.5;
     }
+
 }
+
+.thumbnail_container:has(.gallery__thumbnail--chosen) {
+    border: 2px solid var(--orange);
+    border-radius: 0.625rem;
+    height: 5.5625rem;
+}
+
 
 .navigation_button {
 

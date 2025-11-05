@@ -3,15 +3,9 @@
 
 
 # Lightbox
-
-- Open a lightbox gallery by clicking on the large product image
 - Check where to add inert in completed project.
 
-- Doesn't look like lightbox is used for mobile at all, so do own design for fullscreen, mimic main design
-
 - Add dalk swipe functionality for mobile later?
-
-- Add inert to the navbar too
 
 # Shopping cart
 
@@ -21,3 +15,7 @@
 
 - Add items to the cart
 - View the cart and remove items from it
+
+
+# Overall
+- Breakpoints touch up

@@ -91,12 +91,12 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                     </div>
                     <div className="gallery__previews">
                         {images.map((item, index) => (
-                            <div key={index}>
+                            <div key={index} className="thumbnail_container">
                                 <img
                                     src={item.src} alt={item.alt} id={index}
                                     className={currentIndex === index ? "gallery__thumbnail gallery__thumbnail--chosen" : "gallery__thumbnail"}
                                     onClick={(e) => { setChosenPicture(e) }}
-                                />
+                                ></img>
                             </div>
                         )
                         )}
@@ -133,19 +133,17 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                     </aside>
                 )}
 
-                {/* Sneaker Company
-
-            Fall Limited Edition Sneakers
-
-            These low-profile sneakers are your perfect casual wear companion. Featuring a
-            durable rubber outer sole, they’ll withstand everything the weather can offer.
-
-            $125.00
-            50%
-            $250.00
-
-            0
-            Add to cart */}
+                <section>
+                    <h1>Sneaker Company</h1>
+                    <h2>Fall Limited Edition Sneakers</h2>
+                    <p>These low-profile sneakers are your perfect casual wear companion. Featuring a
+                        durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+                    <span> $125.00
+                        50%
+                        $250.00</span>
+                    <span>0
+                        Add to cart</span>
+                </section>
 
             </main>
 

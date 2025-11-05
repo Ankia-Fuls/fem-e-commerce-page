@@ -13,7 +13,7 @@ function App() {
       <Main pageInert={pageInert} setPageInert={setPageInert} lightboxOpen={lightboxOpen} setLightboxOpen={setLightboxOpen}></Main>
 
 
-      <footer className="attribution" inert={pageInert}>
+      <footer className="attribution" inert={pageInert || lightboxOpen}>
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" rel="noreferrer" target="_blank">Frontend Mentor</a>.
         Coded by <a href="https://github.com/Ankia-Fuls">Ankia Fuls</a>.
       </footer>
