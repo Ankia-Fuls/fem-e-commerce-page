@@ -11,6 +11,8 @@
 
 - Add dalk swipe functionality for mobile later?
 
+- Add inert to the navbar too
+
 # Shopping cart
 
 - Use redux toolkit 

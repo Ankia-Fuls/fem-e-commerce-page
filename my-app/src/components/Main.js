@@ -105,34 +105,31 @@ function Main({ pageInert, setPageInert }) {
                 </section>
 
                 {lightboxOpen && (
-                    <aside>
-                        <div className="lightbox dismiss" onClick={closeLightbox}>
-                            <button className="dismiss" onClick={closeLightbox}>
+
+                    <aside className="lightbox dismiss" onClick={closeLightbox}>
+                        <div className="lightbox__main">
+                            <button className="lightbox__dismiss dismiss" onClick={closeLightbox}>
                                 <img src="./images/icon-close.svg" alt="" className="dismiss" />
                             </button>
-
-                            <div className="lightbox__main">
-                                <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-                                <button className="navigation_button navigation_button--left" onClick={prevImg} >
-                                    <img src="./images/icon-previous.svg" alt="" />
-                                </button>
-                                <button className="navigation_button navigation_button--right" onClick={nextImg}>
-                                    <img src="./images/icon-next.svg" alt="" />
-                                </button>
-                            </div>
-                            <div className="lightbox__previews">
-                                {images.map((item, index) => (
-                                    <div key={index}>
-                                        <img
-                                            src={item.src} alt={item.alt} id={index}
-                                            className={currentIndex === index ? "gallery__thumbnail gallery__thumbnail--chosen" : "gallery__thumbnail"}
-                                            onClick={(e) => { setChosenPicture(e) }}
-                                        />
-                                    </div>
-                                )
-                                )}
-                            </div>
-
+                            <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
+                            <button className="navigation_button navigation_button--left navigation_button--lightbox" onClick={prevImg} >
+                                <img src="./images/icon-previous.svg" alt="" />
+                            </button>
+                            <button className="navigation_button navigation_button--right navigation_button--lightbox" onClick={nextImg}>
+                                <img src="./images/icon-next.svg" alt="" />
+                            </button>
+                        </div>
+                        <div className="lightbox__previews">
+                            {images.map((item, index) => (
+                                <div key={index}>
+                                    <img
+                                        src={item.src} alt={item.alt} id={index}
+                                        className={currentIndex === index ? "gallery__thumbnail gallery__thumbnail--chosen" : "gallery__thumbnail"}
+                                        onClick={(e) => { setChosenPicture(e) }}
+                                    />
+                                </div>
+                            )
+                            )}
                         </div>
                     </aside>
                 )}
