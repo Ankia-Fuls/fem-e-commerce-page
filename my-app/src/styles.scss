@@ -356,9 +356,8 @@ main {
         img {
             @media only screen and (min-width: $med) {
                 border-radius: 0.625rem;
-                margin: 0;
-            }
 
+            }
         }
 
     }
@@ -369,10 +368,14 @@ main {
 
 }
 
+.thumbnail_container {
+    aspect-ratio: 1 / 1;
+}
+
 .thumbnail_container:has(.gallery__thumbnail--chosen) {
     border: 2px solid var(--orange);
     border-radius: 0.625rem;
-    height: 5.5625rem;
+    // height: 5.5625rem;
 }
 
 .navigation_button {
@@ -415,6 +418,7 @@ main {
     }
 }
 
+//open lightbox
 .navigation_button-lightbox {
 
     display: block;
@@ -429,21 +433,35 @@ main {
     border-radius: 50%;
     border: none;
 
+    @media only screen and (min-width: $med) {
+        width: 3.625rem;
+    }
+
     &:hover {
         cursor: pointer;
     }
 
     img {
-        width: 0.625rem;
-        height: 0.625rem;
+        width: 25%;
+        height: 35%;
     }
 
     &--left {
         left: 0.9375rem;
+
+        @media only screen and (min-width: $med) {
+            left: 0;
+            transform: translateX(-50%);
+        }
     }
 
     &--right {
         right: 0.9375rem;
+
+        @media only screen and (min-width: $med) {
+            right: 0;
+            transform: translateX(50%);
+        }
     }
 
 }
@@ -460,9 +478,10 @@ main {
 
     display: flex;
     flex-direction: column;
-    // justify-content: center;
+    justify-content: center;
     align-items: center;
     gap: 2.375rem;
+
 
     &__main {
         position: relative;
@@ -470,7 +489,6 @@ main {
         @media only screen and (min-width: $med) {
             width: 40%;
             max-width: 34.375rem;
-            padding-top: 5.3125rem;
         }
 
         img {
@@ -487,6 +505,11 @@ main {
         top: -2rem;
         background-color: transparent;
         border: none;
+
+        @media only screen and (min-width: $med) {
+            top: -3rem;
+            right: 0;
+        }
 
         &:hover {
             cursor: pointer;
@@ -519,6 +542,7 @@ main {
             @media only screen and (min-width: $med) {
                 border-radius: 0.625rem;
                 margin: 0;
+                object-fit: cover;
             }
 
         }

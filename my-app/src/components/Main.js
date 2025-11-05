@@ -31,15 +31,17 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
         "gallery__thumbnail gallery__thumbnail--chosen", "gallery__thumbnail", "gallery__thumbnail", "gallery__thumbnail"
     ]);
 
+    //Update class names of thumbnails based on navigation
     const updateClassnames = (selectedId) => {
         const tempArray = ["gallery__thumbnail", "gallery__thumbnail", "gallery__thumbnail", "gallery__thumbnail"];
         tempArray[selectedId] = "gallery__thumbnail gallery__thumbnail--chosen";
         setClassnameList(tempArray);
+        return;
     }
 
     //Set large picture by clicking thumbnails
     const setChosenPicture = (e) => {
-        const selectedId = e.target.id;
+        const selectedId = parseInt(e.target.id);
         setCurrentIndex(selectedId);
         updateClassnames(selectedId);
 
