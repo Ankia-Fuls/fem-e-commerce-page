@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Main({ pageInert }) {
+function Main({ pageInert, setPageInert }) {
 
     const images = [
         {
@@ -25,9 +25,9 @@ function Main({ pageInert }) {
         }
     ]
 
-    const [clickedImg, setClickedImg] = useState(null);
+    // const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
-    // const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxOpen, setLightboxOpen] = useState(false);
 
     //Set large picture by clicking thumbnails
     const setChosenPicture = (e) => {
@@ -67,34 +67,47 @@ function Main({ pageInert }) {
 
     }
 
+    const openLightbox = () => {
+        setLightboxOpen(true);
+        setPageInert(true);
+    }
+
+    const closeLightbox = (e) => {
+        if (e.target.classList.contains("dismiss")) {
+            setLightboxOpen(false);
+            setPageInert(false);
+        }
+    }
+
     return (
-        <main inert={pageInert}>
+        <>
+            <main inert={pageInert}>
 
-            <section className="gallery">
-                <div className="gallery__main">
-                    <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-                    <button className="navigation_button navigation_button--left" onClick={prevImg} >
-                        <img src="./images/icon-previous.svg" alt="" />
-                    </button>
-                    <button className="navigation_button navigation_button--right" onClick={nextImg}>
-                        <img src="./images/icon-next.svg" alt="" />
-                    </button>
-                </div>
-                <div className="gallery__previews">
-                    {images.map((item, index) => (
-                        <div key={index}>
-                            <img
-                                src={item.src} alt={item.alt} id={index}
-                                className={currentIndex === index ? "gallery__thumbnail gallery__thumbnail--chosen" : "gallery__thumbnail"}
-                                onClick={(e) => { setChosenPicture(e) }}
-                            />
-                        </div>
-                    )
-                    )}
-                </div>
-            </section>
+                <section className="gallery">
+                    <div className="gallery__main">
+                        <img src={images[currentIndex].src} alt={images[currentIndex].alt} onClick={openLightbox} />
+                        <button className="navigation_button navigation_button--left" onClick={prevImg} >
+                            <img src="./images/icon-previous.svg" alt="" />
+                        </button>
+                        <button className="navigation_button navigation_button--right" onClick={nextImg}>
+                            <img src="./images/icon-next.svg" alt="" />
+                        </button>
+                    </div>
+                    <div className="gallery__previews">
+                        {images.map((item, index) => (
+                            <div key={index}>
+                                <img
+                                    src={item.src} alt={item.alt} id={index}
+                                    className={currentIndex === index ? "gallery__thumbnail gallery__thumbnail--chosen" : "gallery__thumbnail"}
+                                    onClick={(e) => { setChosenPicture(e) }}
+                                />
+                            </div>
+                        )
+                        )}
+                    </div>
+                </section>
 
-            {/* Sneaker Company
+                {/* Sneaker Company
 
             Fall Limited Edition Sneakers
 
@@ -108,7 +121,40 @@ function Main({ pageInert }) {
             0
             Add to cart */}
 
-        </main>
+            </main>
+            {lightboxOpen && (
+                <aside>
+                    <div className="lightbox dismiss" onClick={closeLightbox}>
+                        <button className="dismiss" onClick={closeLightbox}>
+                            <img src="./images/icon-close.svg" alt="" className="dismiss" />
+                        </button>
+
+                        <div className="lightbox__main">
+                            <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
+                            <button className="navigation_button navigation_button--left" onClick={prevImg} >
+                                <img src="./images/icon-previous.svg" alt="" />
+                            </button>
+                            <button className="navigation_button navigation_button--right" onClick={nextImg}>
+                                <img src="./images/icon-next.svg" alt="" />
+                            </button>
+                        </div>
+                        <div className="lightbox__previews">
+                            {images.map((item, index) => (
+                                <div key={index}>
+                                    <img
+                                        src={item.src} alt={item.alt} id={index}
+                                        className={currentIndex === index ? "gallery__thumbnail gallery__thumbnail--chosen" : "gallery__thumbnail"}
+                                        onClick={(e) => { setChosenPicture(e) }}
+                                    />
+                                </div>
+                            )
+                            )}
+                        </div>
+
+                    </div>
+                </aside>
+            )}
+        </>
     );
 }
 

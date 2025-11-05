@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Header pageInert={pageInert} setPageInert={setPageInert} />
-      <Main pageInert={pageInert}></Main>
+      <Main pageInert={pageInert} setPageInert={setPageInert}></Main>
 
 
       <footer className="attribution" inert={pageInert}>

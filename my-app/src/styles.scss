@@ -331,6 +331,10 @@ body {
         }
 
     }
+
+    &__thumbnail--chosen {
+        opacity: 0.5;
+    }
 }
 
 .navigation_button {
@@ -370,6 +374,4 @@ body {
     }
 }
 
-.gallery__thumbnail--chosen {
-    opacity: 0.5;
-}
+.lightbox {}

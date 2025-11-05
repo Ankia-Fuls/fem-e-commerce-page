@@ -7,7 +7,6 @@
 - Open a lightbox gallery by clicking on the large product image
 - Check where to add inert in completed project.
 
-- Add buttons which are shown on mobile and hide the thumbnails in mobile
 - Doesn't look like lightbox is used for mobile at all, so do own design for fullscreen, mimic main design
 
 - Add dalk swipe functionality for mobile later?
