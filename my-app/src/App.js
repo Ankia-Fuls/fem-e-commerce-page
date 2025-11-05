@@ -5,11 +5,12 @@ import { useState } from "react";
 
 function App() {
   const [pageInert, setPageInert] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   return (
     <>
-      <Header pageInert={pageInert} setPageInert={setPageInert} />
-      <Main pageInert={pageInert} setPageInert={setPageInert}></Main>
+      <Header pageInert={pageInert} setPageInert={setPageInert} lightboxOpen={lightboxOpen} />
+      <Main pageInert={pageInert} setPageInert={setPageInert} lightboxOpen={lightboxOpen} setLightboxOpen={setLightboxOpen}></Main>
 
 
       <footer className="attribution" inert={pageInert}>

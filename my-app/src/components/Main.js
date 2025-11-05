@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Main({ pageInert, setPageInert }) {
+function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
 
     const images = [
         {
@@ -26,7 +26,6 @@ function Main({ pageInert, setPageInert }) {
     ]
 
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [lightboxOpen, setLightboxOpen] = useState(false);
 
     //Set large picture by clicking thumbnails
     const setChosenPicture = (e) => {

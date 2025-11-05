@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-function Header({ pageInert, setPageInert }) {
+function Header({ pageInert, setPageInert, lightboxOpen }) {
 
     // START OF NAVBAR CODING
 
@@ -87,7 +87,7 @@ function Header({ pageInert, setPageInert }) {
 
 
     return (
-        <header className="navbar">
+        <header className="navbar" inert={lightboxOpen}>
             <nav>
                 <div class={greyOut ? "grey-out grey-out--shown" : "grey-out"} aria-hidden="true"></div>
 

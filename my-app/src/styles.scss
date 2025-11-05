@@ -405,6 +405,10 @@ body {
         background-color: transparent;
         border: none;
 
+        &:hover {
+            cursor: pointer;
+        }
+
         img {
             filter: brightness(400%);
             width: 1rem;
