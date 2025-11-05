@@ -8,11 +8,11 @@ function App() {
 
   return (
     <>
-      <Header setPageInert={setPageInert} />
+      <Header pageInert={pageInert} setPageInert={setPageInert} />
       <Main pageInert={pageInert}></Main>
 
 
-      <footer className="attribution">
+      <footer className="attribution" inert={pageInert}>
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" rel="noreferrer" target="_blank">Frontend Mentor</a>.
         Coded by <a href="https://github.com/Ankia-Fuls">Ankia Fuls</a>.
       </footer>

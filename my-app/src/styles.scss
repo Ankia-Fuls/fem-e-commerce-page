@@ -133,7 +133,7 @@ body {
 
     //entire menu
     &__menu {
-        z-index: 1;
+        z-index: 3;
 
         @media only screen and (max-width: $med-lower) {
             //mobile
@@ -237,6 +237,7 @@ body {
         visibility: visible;
         opacity: 1;
         transition: opacity 250ms ease-in, visibility 0ms ease-in 0ms;
+        z-index: 2;
     }
 
 }
@@ -338,7 +339,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 5;
+    z-index: 1;
 
     background-color: var(--light-grayish-blue);
     width: 2.5rem;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-function Header({ setPageInert }) {
+function Header({ pageInert, setPageInert }) {
 
     // START OF NAVBAR CODING
 
@@ -122,7 +122,7 @@ function Header({ setPageInert }) {
             </nav>
 
             {/* Shopping cart and profile button */}
-            <div className="navbar__personal">
+            <div className="navbar__personal" inert={pageInert}>
                 <button id="cart-btn-open" className="navbar__cart-btn" aria-label={cartOpen ? "Close shopping cart." : "Open shopping cart."} onClick={toggleCart}>
                     <img src="./images/icon-cart.svg" alt=""></img>
                 </button>

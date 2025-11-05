@@ -73,7 +73,7 @@ function Main({ pageInert }) {
             <section className="gallery">
                 <div className="gallery__main">
                     <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-                    <button className="navigation_button navigation_button--left" onClick={prevImg}>
+                    <button className="navigation_button navigation_button--left" onClick={prevImg} >
                         <img src="./images/icon-previous.svg" alt="" />
                     </button>
                     <button className="navigation_button navigation_button--right" onClick={nextImg}>
