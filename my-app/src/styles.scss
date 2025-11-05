@@ -356,14 +356,14 @@ main {
         img {
             @media only screen and (min-width: $med) {
                 border-radius: 0.625rem;
-
+                background-color: var(--white);
             }
         }
 
     }
 
     &__thumbnail--chosen {
-        opacity: 0.5;
+        opacity: 0.3;
     }
 
 }
@@ -375,6 +375,7 @@ main {
 .thumbnail_container:has(.gallery__thumbnail--chosen) {
     border: 2px solid var(--orange);
     border-radius: 0.625rem;
+    background-color: var(--white);
     // height: 5.5625rem;
 }
 
@@ -536,6 +537,7 @@ main {
             max-width: 27.9375rem;
             gap: 1.75rem;
 
+
         }
 
         img {
@@ -543,6 +545,7 @@ main {
                 border-radius: 0.625rem;
                 margin: 0;
                 object-fit: cover;
+                background-color: var(--white);
             }
 
         }
