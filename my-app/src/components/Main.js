@@ -46,6 +46,12 @@ function Main({ pageInert }) {
             <section className="gallery">
                 <div className="gallery__main">
                     <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
+                    <button className="navigation_button navigation_button--left">
+                        <img src="./images/icon-previous.svg" alt="" />
+                    </button>
+                    <button className="navigation_button navigation_button--right">
+                        <img src="./images/icon-next.svg" alt="" />
+                    </button>
                 </div>
                 <div className="gallery__previews">
                     {images.map((item, index) => (
