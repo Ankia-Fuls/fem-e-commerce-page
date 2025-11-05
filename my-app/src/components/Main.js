@@ -27,16 +27,27 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
+    const [classnameList, setClassnameList] = useState([
+        "gallery__thumbnail gallery__thumbnail--chosen", "gallery__thumbnail", "gallery__thumbnail", "gallery__thumbnail"
+    ]);
+
+    const updateClassnames = (selectedId) => {
+        const tempArray = ["gallery__thumbnail", "gallery__thumbnail", "gallery__thumbnail", "gallery__thumbnail"];
+        tempArray[selectedId] = "gallery__thumbnail gallery__thumbnail--chosen";
+        setClassnameList(tempArray);
+    }
+
     //Set large picture by clicking thumbnails
     const setChosenPicture = (e) => {
         const selectedId = e.target.id;
         setCurrentIndex(selectedId);
+        updateClassnames(selectedId);
 
-        const allThumbnails = e.target.parentNode.parentNode.children;
-        for (let i = 0; i < 4; i++) {
-            allThumbnails[i].children[0].className = "gallery__thumbnail";
-        }
-        e.target.className = "gallery__thumbnail gallery__thumbnail--chosen";
+        // const allThumbnails = e.target.parentNode.parentNode.children;
+        // for (let i = 0; i < 4; i++) {
+        //     allThumbnails[i].children[0].className = "gallery__thumbnail";
+        // }
+        // e.target.className = "gallery__thumbnail gallery__thumbnail--chosen";
     }
 
     //Button controls
@@ -45,10 +56,12 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
 
         if (currentIndex + 1 >= totalLength) {
             setCurrentIndex(0);
+            updateClassnames(0);
         }
         else {
             const newIndex = currentIndex + 1;
             setCurrentIndex(newIndex);
+            updateClassnames(newIndex);
         }
     }
 
@@ -58,10 +71,12 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
         if (currentIndex === 0) {
             const newIndex = totalLength - 1;
             setCurrentIndex(newIndex);
+            updateClassnames(newIndex);
         }
         else {
             const newIndex = currentIndex - 1;
             setCurrentIndex(newIndex);
+            updateClassnames(newIndex);
         }
 
     }
@@ -94,7 +109,7 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                             <div key={index} className="thumbnail_container">
                                 <img
                                     src={item.src} alt={item.alt} id={index}
-                                    className={currentIndex === index ? "gallery__thumbnail gallery__thumbnail--chosen" : "gallery__thumbnail"}
+                                    className={classnameList[index]}
                                     onClick={(e) => { setChosenPicture(e) }}
                                 ></img>
                             </div>
@@ -111,19 +126,19 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                                 <img src="./images/icon-close.svg" alt="" className="dismiss" />
                             </button>
                             <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-                            <button className="navigation_button navigation_button--left navigation_button--lightbox" onClick={prevImg} >
+                            <button className="navigation_button-lightbox navigation_button-lightbox--left" onClick={prevImg} >
                                 <img src="./images/icon-previous.svg" alt="" />
                             </button>
-                            <button className="navigation_button navigation_button--right navigation_button--lightbox" onClick={nextImg}>
+                            <button className="navigation_button-lightbox navigation_button-lightbox--right" onClick={nextImg}>
                                 <img src="./images/icon-next.svg" alt="" />
                             </button>
                         </div>
                         <div className="lightbox__previews">
                             {images.map((item, index) => (
-                                <div key={index}>
+                                <div key={index} className="thumbnail_container" >
                                     <img
                                         src={item.src} alt={item.alt} id={index}
-                                        className={currentIndex === index ? "gallery__thumbnail gallery__thumbnail--chosen" : "gallery__thumbnail"}
+                                        className={classnameList[index]}
                                         onClick={(e) => { setChosenPicture(e) }}
                                     />
                                 </div>

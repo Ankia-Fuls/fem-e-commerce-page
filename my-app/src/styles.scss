@@ -375,7 +375,6 @@ main {
     height: 5.5625rem;
 }
 
-
 .navigation_button {
 
     display: block;
@@ -411,10 +410,42 @@ main {
         z-index: 3;
     }
 
-
     @media only screen and (min-width: $med) {
         display: none;
     }
+}
+
+.navigation_button-lightbox {
+
+    display: block;
+    position: absolute;
+    top: 50%;
+    // transform: translateY(-50%);
+    z-index: 3;
+
+    background-color: var(--light-grayish-blue);
+    width: 2.5rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    img {
+        width: 0.625rem;
+        height: 0.625rem;
+    }
+
+    &--left {
+        left: 0.9375rem;
+    }
+
+    &--right {
+        right: 0.9375rem;
+    }
+
 }
 
 .lightbox {
@@ -429,11 +460,24 @@ main {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
+    // justify-content: center;
+    align-items: center;
+    gap: 2.375rem;
 
     &__main {
         position: relative;
+
+        @media only screen and (min-width: $med) {
+            width: 40%;
+            max-width: 34.375rem;
+            padding-top: 5.3125rem;
+        }
+
+        img {
+            @media only screen and (min-width: $med) {
+                border-radius: 0.9375rem;
+            }
+        }
     }
 
     &__dismiss {
@@ -465,6 +509,18 @@ main {
         @media only screen and (min-width: $med) {
             display: flex;
             flex-direction: row;
+            width: 30%;
+            max-width: 27.9375rem;
+            gap: 1.75rem;
+
+        }
+
+        img {
+            @media only screen and (min-width: $med) {
+                border-radius: 0.625rem;
+                margin: 0;
+            }
+
         }
 
     }
