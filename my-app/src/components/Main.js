@@ -27,6 +27,7 @@ function Main({ pageInert }) {
 
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
+    // const [lightboxOpen, setLightboxOpen] = useState(false);
 
     //Set large picture by clicking thumbnails
     const setChosenPicture = (e) => {
@@ -40,16 +41,42 @@ function Main({ pageInert }) {
         e.target.className = "gallery__thumbnail gallery__thumbnail--chosen";
     }
 
+    const nextImg = () => {
+        const totalLength = images.length;
+
+        if (currentIndex + 1 >= totalLength) {
+            setCurrentIndex(0);
+        }
+        else {
+            const newIndex = currentIndex + 1;
+            setCurrentIndex(newIndex);
+        }
+    }
+
+    const prevImg = () => {
+        const totalLength = images.length;
+
+        if (currentIndex === 0) {
+            const newIndex = totalLength - 1;
+            setCurrentIndex(newIndex);
+        }
+        else {
+            const newIndex = currentIndex - 1;
+            setCurrentIndex(newIndex);
+        }
+
+    }
+
     return (
         <main inert={pageInert}>
 
             <section className="gallery">
                 <div className="gallery__main">
                     <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-                    <button className="navigation_button navigation_button--left">
+                    <button className="navigation_button navigation_button--left" onClick={prevImg}>
                         <img src="./images/icon-previous.svg" alt="" />
                     </button>
-                    <button className="navigation_button navigation_button--right">
+                    <button className="navigation_button navigation_button--right" onClick={nextImg}>
                         <img src="./images/icon-next.svg" alt="" />
                     </button>
                 </div>
