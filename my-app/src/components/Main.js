@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
 
@@ -24,7 +24,6 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
             alt: "Fourth image of the product"
         }
     ];
-
     const thumbnails = [
         {
             id: 0,
@@ -46,14 +45,11 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
             src: "./images/image-product-4-thumbnail.jpg",
             alt: "Fourth image of the product"
         }
-    ]
-
+    ];
     const [currentIndex, setCurrentIndex] = useState(0);
-
     const [classnameList, setClassnameList] = useState([
         "gallery__thumbnail gallery__thumbnail--chosen", "gallery__thumbnail", "gallery__thumbnail", "gallery__thumbnail"
     ]);
-
 
 
     //Update class names of thumbnails based on navigation
@@ -69,12 +65,6 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
         const selectedId = parseInt(e.target.id);
         setCurrentIndex(selectedId);
         updateClassnames(selectedId);
-
-        // const allThumbnails = e.target.parentNode.parentNode.children;
-        // for (let i = 0; i < 4; i++) {
-        //     allThumbnails[i].children[0].className = "gallery__thumbnail";
-        // }
-        // e.target.className = "gallery__thumbnail gallery__thumbnail--chosen";
     }
 
     //Button controls
@@ -115,17 +105,22 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
     const closeLightbox = (e) => {
         if (e.target.classList.contains("dismiss")) {
             setLightboxOpen(false);
-            // focusElement.current.focus();
         }
+        setTimeout(() => {
+            focusElement.current.focus();
+        }, 100);
     }
 
-    // const focusElement = useRef();
+    const focusElement = useRef();
 
     //Close modal with escape
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === "Escape") {
                 setLightboxOpen(false);
+                setTimeout(() => {
+                    focusElement.current.focus();
+                }, 100);
             }
         };
 
@@ -148,7 +143,7 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                         <img
                             src={images[currentIndex].src} alt={images[currentIndex].alt}
                             onClick={(e) => openLightbox(e)}
-                            // ref={focusElement}
+                            ref={focusElement}
                             role="button" tabindex="0"
                             onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { openLightbox(e) } }} />
                         <button className="navigation_button navigation_button--left" onClick={prevImg}>
