@@ -122,8 +122,12 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                 <section className="gallery" inert={lightboxOpen} aria-labelledby="gallery-heading">
                     <h1 id="gallery-heading" hidden>Gallery</h1>
                     <div className="gallery__main">
-                        <img src={images[currentIndex].src} alt={images[currentIndex].alt} onClick={openLightbox} />
-                        <button className="navigation_button navigation_button--left" onClick={prevImg} >
+                        <img
+                            src={images[currentIndex].src} alt={images[currentIndex].alt}
+                            onClick={openLightbox}
+                            role="button" tabindex="0"
+                            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { openLightbox() } }} />
+                        <button className="navigation_button navigation_button--left" onClick={prevImg}>
                             <img src="./images/icon-previous.svg" alt="" />
                         </button>
                         <button className="navigation_button navigation_button--right" onClick={nextImg}>
@@ -137,6 +141,8 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                                     src={item.src} alt={item.alt} id={index}
                                     className={classnameList[index]}
                                     onClick={(e) => { setChosenPicture(e) }}
+                                    role="button" tabindex="0" aria-label="expand image into lightbox view"
+                                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { setChosenPicture(e) } }}
                                 ></img>
                             </div>
                         )
@@ -166,6 +172,8 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                                         src={item.src} alt={item.alt} id={index}
                                         className={classnameList[index]}
                                         onClick={(e) => { setChosenPicture(e) }}
+                                        role="button" tabindex="0" aria-label="expand image into lightbox view"
+                                        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { setChosenPicture(e) } }}
                                     />
                                 </div>
                             )
@@ -174,7 +182,7 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                     </aside>
                 )}
 
-                <section aria-labelledby="product-details" className="product">
+                <section aria-labelledby="product-details" className="product" inert={lightboxOpen}>
                     <h2 className="product__brand">Sneaker Company</h2>
                     <h1 id="product-details" className="product__name">Fall Limited Edition Sneakers</h1>
                     <p className="product__description">These low-profile sneakers are your perfect casual wear companion. Featuring a
