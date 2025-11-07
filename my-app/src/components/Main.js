@@ -23,6 +23,29 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
             src: "./images/image-product-4.jpg",
             alt: "Fourth image of the product"
         }
+    ];
+
+    const thumbnails = [
+        {
+            id: 0,
+            src: "./images/image-product-1-thumbnail.jpg",
+            alt: "First image of the product"
+        },
+        {
+            id: 1,
+            src: "./images/image-product-2-thumbnail.jpg",
+            alt: "Second image of the product"
+        },
+        {
+            id: 2,
+            src: "./images/image-product-3-thumbnail.jpg",
+            alt: "Third image of the product"
+        },
+        {
+            id: 3,
+            src: "./images/image-product-4-thumbnail.jpg",
+            alt: "Fourth image of the product"
+        }
     ]
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -108,7 +131,7 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                         </button>
                     </div>
                     <div className="gallery__previews">
-                        {images.map((item, index) => (
+                        {thumbnails.map((item, index) => (
                             <div key={index} className="thumbnail_container">
                                 <img
                                     src={item.src} alt={item.alt} id={index}
@@ -137,7 +160,7 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                             </button>
                         </div>
                         <div className="lightbox__previews">
-                            {images.map((item, index) => (
+                            {thumbnails.map((item, index) => (
                                 <div key={index} className="thumbnail_container" >
                                     <img
                                         src={item.src} alt={item.alt} id={index}
@@ -160,19 +183,22 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                         <p className="product__price--current">$125.00 <span className="product__price--discount">50%</span></p>
                         <p className="product__price--old">$250.00</p>
                     </div>
-                    <div className="product__cart-container">
-                        <button className="product__button">
-                            <img src="./images/icon-minus.svg" alt="" />
-                        </button>
-                        <span className="product__amount">0</span>
-                        <button className="product__button">
-                            <img src="./images/icon-plus.svg" alt="" />
+                    <div className="product__container">
+                        <div className="product__cart-container">
+                            <button className="product__button">
+                                <img src="./images/icon-minus.svg" alt="" />
+                            </button>
+                            <span className="product__amount">0</span>
+                            <button className="product__button">
+                                <img src="./images/icon-plus.svg" alt="" />
+                            </button>
+                        </div>
+                        <button className="product__add-to-cart">
+                            <img src="./images/icon-cart.svg" alt="" />
+                            Add to cart
                         </button>
                     </div>
-                    <button className="product__add-to-cart">
-                        <img src="./images/icon-cart.svg" alt="" />
-                        Add to cart
-                    </button>
+
                 </section>
 
             </main>
