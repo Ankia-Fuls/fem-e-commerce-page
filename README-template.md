@@ -98,6 +98,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 - [Coder Coder YouTube video](https://www.youtube.com/watch?v=pBv7igaxfQE) - This video guided me along how to create accessible hamburger menus
 - [MatchMedia for ReactJS](https://medium.com/better-programming/using-window-matchmedia-in-react-8116eada2588) - This helped me adapt the way match media worked in basic JS to react to update the code based on screen width.
 - [Grey-out transition](https://dev.to/nicm42/fading-in-and-fading-out-with-css-transitions-3lc1) - This helped show how to toggle visibility with an animated effect for the grey-out behind the menu.
+- [Color filter](https://angel-rs.github.io/css-color-filter-generator/) - This helped me find the desired color filter to change the color of the svg to the desired color;
 
 ## Author
 

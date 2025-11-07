@@ -157,19 +157,22 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                     <p className="product__description">These low-profile sneakers are your perfect casual wear companion. Featuring a
                         durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
                     <div className="product__price" >
-                        <p>$125.00 <span className="product__price--discount">50%</span></p>
+                        <p className="product__price--current">$125.00 <span className="product__price--discount">50%</span></p>
                         <p className="product__price--old">$250.00</p>
                     </div>
                     <div className="product__cart-container">
-                        <button>
+                        <button className="product__button">
                             <img src="./images/icon-minus.svg" alt="" />
                         </button>
                         <span className="product__amount">0</span>
-                        <button>
+                        <button className="product__button">
                             <img src="./images/icon-plus.svg" alt="" />
                         </button>
                     </div>
-                    <button className="product__add-to-cart">Add to cart</button>
+                    <button className="product__add-to-cart">
+                        <img src="./images/icon-cart.svg" alt="" />
+                        Add to cart
+                    </button>
                 </section>
 
             </main>
