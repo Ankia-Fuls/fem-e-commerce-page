@@ -13,8 +13,6 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
     const focusOpen = useRef();
     const focusClose = useRef();
 
-
-
     const openMenu = () => {
         setOpenButtonExpanded(true);
         setNavMenuInert(false);

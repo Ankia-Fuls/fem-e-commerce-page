@@ -671,7 +671,6 @@ main {
         align-items: center;
 
         background-color: var(--grayish-blue-3);
-        padding-inline: 1.4375rem;
         border: none;
         border-radius: 0.5rem;
 
@@ -683,6 +682,8 @@ main {
         align-items: center;
         border: none;
         background-color: transparent;
+        height: 100%;
+        padding-inline: 1.4375rem;
 
         &:hover {
             cursor: pointer;
