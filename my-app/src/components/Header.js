@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 
 function Header({ pageInert, setPageInert, lightboxOpen }) {
@@ -10,15 +10,20 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
     const [menuTransition, setMenuTransition] = useState(true);
     const [greyOut, setGreyOut] = useState(false);
 
-    const closeMenuBtn = document.getElementById("btnClose");
-    const openMenuBtn = document.getElementById("btnOpen");
+    const focusOpen = useRef();
+    const focusClose = useRef();
+
+
 
     const openMenu = () => {
         setOpenButtonExpanded(true);
         setNavMenuInert(false);
         setMenuTransition(false);
 
-        closeMenuBtn.focus();
+        setTimeout(() => {
+            focusClose.current.focus();
+        }, 500);
+
 
         setGreyOut(true);
         setPageInert(true);
@@ -33,12 +38,27 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
             setMenuTransition(true);
         }, 500);
 
-        openMenuBtn.focus();
+        focusOpen.current.focus();
 
         setGreyOut(false);
         setPageInert(false);
     }
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "Escape") {
+                closeMenu();
+            }
+        };
+
+        if (!navMenuInert) {
+            document.addEventListener("keydown", handleKeyDown);
+        }
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [navMenuInert, closeMenu]);
 
     //SCREEN SIZE WATCHER, UPDATES
     const [isNarrowScreen, setIsNarrowScreen] = useState(false);
@@ -97,14 +117,14 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
                     <span id="nav-label" hidden>Navigation</span>
 
                     {/* The button for when the mobile menu is open */}
-                    <button id="btnOpen" className="navbar__open" aria-expanded={openButtonExpanded} aria-labelledby="nav-label" onClick={openMenu}>
+                    <button id="btnOpen" className="navbar__open" aria-expanded={openButtonExpanded} aria-labelledby="nav-label" onClick={openMenu} ref={focusOpen}>
                         <img src="./images/icon-menu.svg" alt="" />
                     </button>
 
                     {/* Menu, shown for both mobile and desktop */}
                     <div className="navbar__menu" role="dialog" aria-labelledby="nav-label" inert={navMenuInert} style={{ transition: menuTransition ? "none" : "" }}>
                         {/* Button hidden for desktop, shown on mobile */}
-                        <button id="btnClose" className="navbar__close" aria-label="Close" onClick={closeMenu}>
+                        <button id="btnClose" className="navbar__close" aria-label="Close" onClick={closeMenu} ref={focusClose}>
                             <img src="./images/icon-close.svg" alt="" />
                         </button>
 

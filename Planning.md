@@ -1,5 +1,5 @@
 # Menu
-- Check die open en close button focus
+- Make background clickable for menu to close
 
 
 # Lightbox
