@@ -4,8 +4,8 @@
 
 # Lightbox
 - Check where to add inert in completed project.
-
 - Add dalk swipe functionality for mobile later?
+- check of regte thumbnails gebruik?
 
 # Shopping cart
 

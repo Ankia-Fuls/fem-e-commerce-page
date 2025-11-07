@@ -96,7 +96,8 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
     return (
         <>
             <main inert={pageInert}>
-                <section className="gallery" inert={lightboxOpen}>
+                <section className="gallery" inert={lightboxOpen} aria-labelledby="gallery-heading">
+                    <h1 id="gallery-heading" hidden>Gallery</h1>
                     <div className="gallery__main">
                         <img src={images[currentIndex].src} alt={images[currentIndex].alt} onClick={openLightbox} />
                         <button className="navigation_button navigation_button--left" onClick={prevImg} >
@@ -150,16 +151,25 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                     </aside>
                 )}
 
-                <section>
-                    <h1>Sneaker Company</h1>
-                    <h2>Fall Limited Edition Sneakers</h2>
-                    <p>These low-profile sneakers are your perfect casual wear companion. Featuring a
+                <section aria-labelledby="product-details" className="product">
+                    <h2 className="product__brand">Sneaker Company</h2>
+                    <h1 id="product-details" className="product__name">Fall Limited Edition Sneakers</h1>
+                    <p className="product__description">These low-profile sneakers are your perfect casual wear companion. Featuring a
                         durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
-                    <span> $125.00
-                        50%
-                        $250.00</span>
-                    <span>0
-                        Add to cart</span>
+                    <div className="product__price" >
+                        <p>$125.00 <span className="product__price--discount">50%</span></p>
+                        <p className="product__price--old">$250.00</p>
+                    </div>
+                    <div className="product__cart-container">
+                        <button>
+                            <img src="./images/icon-minus.svg" alt="" />
+                        </button>
+                        <span className="product__amount">0</span>
+                        <button>
+                            <img src="./images/icon-plus.svg" alt="" />
+                        </button>
+                    </div>
+                    <button className="product__add-to-cart">Add to cart</button>
                 </section>
 
             </main>
