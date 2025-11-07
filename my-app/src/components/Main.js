@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
 
@@ -54,6 +54,8 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
         "gallery__thumbnail gallery__thumbnail--chosen", "gallery__thumbnail", "gallery__thumbnail", "gallery__thumbnail"
     ]);
 
+
+
     //Update class names of thumbnails based on navigation
     const updateClassnames = (selectedId) => {
         const tempArray = ["gallery__thumbnail", "gallery__thumbnail", "gallery__thumbnail", "gallery__thumbnail"];
@@ -106,27 +108,49 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
 
     }
 
-    const openLightbox = () => {
+    const openLightbox = (e) => {
         setLightboxOpen(true);
     }
 
     const closeLightbox = (e) => {
         if (e.target.classList.contains("dismiss")) {
             setLightboxOpen(false);
+            // focusElement.current.focus();
         }
     }
+
+    // const focusElement = useRef();
+
+    //Close modal with escape
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "Escape") {
+                setLightboxOpen(false);
+            }
+        };
+
+        if (lightboxOpen) {
+            document.addEventListener("keydown", handleKeyDown);
+        }
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [lightboxOpen, setLightboxOpen]);
+
 
     return (
         <>
             <main inert={pageInert}>
                 <section className="gallery" inert={lightboxOpen} aria-labelledby="gallery-heading">
-                    <h1 id="gallery-heading" hidden>Gallery</h1>
+                    <h1 id="gallery-heading" hidden >Gallery</h1>
                     <div className="gallery__main">
                         <img
                             src={images[currentIndex].src} alt={images[currentIndex].alt}
-                            onClick={openLightbox}
+                            onClick={(e) => openLightbox(e)}
+                            // ref={focusElement}
                             role="button" tabindex="0"
-                            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { openLightbox() } }} />
+                            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { openLightbox(e) } }} />
                         <button className="navigation_button navigation_button--left" onClick={prevImg}>
                             <img src="./images/icon-previous.svg" alt="" />
                         </button>
@@ -152,9 +176,10 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
 
                 {lightboxOpen && (
 
-                    <aside className="lightbox dismiss" onClick={closeLightbox}>
+                    <aside className="lightbox dismiss" role="dialog"
+                        aria-modal="true" onClick={closeLightbox}>
                         <div className="lightbox__main">
-                            <button className="lightbox__dismiss dismiss" onClick={closeLightbox}>
+                            <button className="lightbox__dismiss dismiss" onClick={closeLightbox} autoFocus>
                                 <img src="./images/icon-close.svg" alt="" className="dismiss" />
                             </button>
                             <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
