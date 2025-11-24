@@ -152,6 +152,12 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
             <div className="navbar__personal" inert={pageInert}>
                 <button id="cart-btn-open" className="navbar__cart-btn" aria-label={cartOpen ? "Close shopping cart." : "Open shopping cart."} onClick={toggleCart}>
                     <img src="./images/icon-cart.svg" alt=""></img>
+                    {cartValue > 0 ? (
+                        <span className='navbar__cart-btn--value'>{cartValue}</span>
+                    ) : (
+                        <></>
+                    )}
+
                 </button>
                 <button id="profile" className="navbar__profile" aria-label='Open user profile'>
                     <img src="./images/image-avatar.png" alt=""></img>

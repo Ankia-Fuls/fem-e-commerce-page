@@ -220,6 +220,24 @@ body {
             width: 3.125rem;
         }
     }
+
+    &__cart-btn {
+        position: relative;
+
+        &--value {
+            position: absolute;
+            top: -0.4375rem;
+            right: -0.625rem;
+
+            background-color: var(--orange);
+            color: var(--white);
+            padding: 0.0625rem 0.4375rem;
+            font-size: 0.625rem;
+            font-weight: 700;
+
+            border-radius: 0.4375rem;
+        }
+    }
 }
 
 .grey-out {
@@ -345,7 +363,6 @@ body {
         font-weight: 700;
         font-size: 0.9375rem;
     }
-
 
 }
 
