@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { remove } from "../store/cartSlice";
 
 
@@ -107,6 +107,11 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
 
     const cartValue = useSelector(state => state.cart);
 
+    const dispatch = useDispatch();
+    const clearCart = () => {
+        dispatch(remove());
+    }
+
 
     return (
         <header className="navbar" inert={lightboxOpen}>
@@ -156,9 +161,21 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
                     <h2 className='cart__heading'>Cart</h2>
                     <div className='cart__divider'></div>
                     {cartValue > 0 ? (
-                        <div>Items</div>
+                        <div className='cart__container'>
+                            <div className='cart__content'>
+                                <img className='cart__image' src='./images/image-product-1-thumbnail.jpg' alt='' />
+                                <div className='cart__text'>
+                                    <p>Fall Limited Edition Sneakers</p>
+                                    <p>&#36;125.00 x {cartValue} <span className='cart__text--bold'>&#36;{cartValue * 125}.00</span></p>
+                                </div>
+                                <button className='cart__delete' onClick={clearCart}>
+                                    <img src='./images/icon-delete.svg' alt='' />
+                                </button>
+                            </div>
+                            <button className='cart__checkout'>Checkout</button>
+                        </div>
                     ) : (
-                        <p className='cart__content'>Your cart is empty.</p>
+                        <p className='cart__empty'>Your cart is empty.</p>
                     )}
 
                 </div>
