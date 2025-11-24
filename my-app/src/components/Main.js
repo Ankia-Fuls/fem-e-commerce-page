@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { add, remove } from "../store/cartSlice";
+import { useDispatch } from "react-redux";
+import { add } from "../store/cartSlice";
 
 function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
 

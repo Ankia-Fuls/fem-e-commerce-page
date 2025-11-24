@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from "react-redux";
+import { remove } from "../store/cartSlice";
 
 
 function Header({ pageInert, setPageInert, lightboxOpen }) {
@@ -103,6 +105,8 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
         }
     }
 
+    const cartValue = useSelector(state => state.cart);
+
 
     return (
         <header className="navbar" inert={lightboxOpen}>
@@ -147,10 +151,16 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
                 <button id="profile" className="navbar__profile" aria-label='Open user profile'>
                     <img src="./images/image-avatar.png" alt=""></img>
                 </button>
+                {/* Open cart */}
                 <div className={cartOpen ? "cart cart--open" : "cart"}>
                     <h2 className='cart__heading'>Cart</h2>
                     <div className='cart__divider'></div>
-                    <p className='cart__content'>Your cart is empty.</p>
+                    {cartValue > 0 ? (
+                        <div>Items</div>
+                    ) : (
+                        <p className='cart__content'>Your cart is empty.</p>
+                    )}
+
                 </div>
             </div>
         </header >
