@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { add, remove } from "../store/cartSlice";
 
 function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
 
@@ -134,6 +136,33 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
     }, [lightboxOpen, setLightboxOpen]);
 
 
+    // REDUX STUFF
+    const [cartValue, setCartValue] = useState(0);
+    const dispatch = useDispatch();
+
+    const increaseCount = () => {
+        //+ button
+        const temp = cartValue + 1;
+        setCartValue(temp);
+    }
+
+    const decreaseCount = () => {
+        //- button
+        const temp = cartValue - 1;
+        if (temp < 0) {
+            setCartValue(0);
+        }
+        else {
+            setCartValue(temp);
+        }
+    }
+
+    const updateCart = (value) => {
+        //submit function
+        dispatch(add(cartValue));
+    }
+
+
     return (
         <>
             <main inert={pageInert}>
@@ -213,15 +242,15 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                     </div>
                     <div className="product__container">
                         <div className="product__cart-container">
-                            <button className="product__button">
+                            <button className="product__button" onClick={decreaseCount}>
                                 <img src="./images/icon-minus.svg" alt="" />
                             </button>
-                            <span className="product__amount">0</span>
-                            <button className="product__button">
+                            <span className="product__amount">{cartValue}</span>
+                            <button className="product__button" onClick={increaseCount}>
                                 <img src="./images/icon-plus.svg" alt="" />
                             </button>
                         </div>
-                        <button className="product__add-to-cart">
+                        <button className="product__add-to-cart" onClick={updateCart}>
                             <img src="./images/icon-cart.svg" alt="" />
                             Add to cart
                         </button>
