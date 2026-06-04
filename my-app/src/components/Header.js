@@ -7,18 +7,19 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
 
     // START OF NAVBAR CODING
 
-    const [openButtonExpanded, setOpenButtonExpanded] = useState(false);
-    const [navMenuInert, setNavMenuInert] = useState(false);
-    const [menuTransition, setMenuTransition] = useState(true);
-    const [greyOut, setGreyOut] = useState(false);
+    const [openButtonExpanded, setOpenButtonExpanded] = useState(false);            // mobile menu open, used for aria-expanded
+    const [navMenuInert, setNavMenuInert] = useState(false);                        // mobile menu inert or not
+    const [menuTransition, setMenuTransition] = useState(true);                     // used to set the transition based on screens
+    const [greyOut, setGreyOut] = useState(false);                                  // activate gray-out when menu open
 
     const focusOpen = useRef();
     const focusClose = useRef();
 
     const openMenu = () => {
-        setOpenButtonExpanded(true);
-        setNavMenuInert(false);
-        setMenuTransition(false);
+        // only used on mobile
+        setOpenButtonExpanded(true);    // For aria-expanded
+        setNavMenuInert(false);         // For entire mobile menu
+        setMenuTransition(false);       // for the animation
 
         setTimeout(() => {
             focusClose.current.focus();
@@ -26,28 +27,34 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
 
 
         setGreyOut(true);
-        setPageInert(true);
+        setPageInert(true);             // make main page inert, everything except the nav page
 
     }
 
-    const closeMenu = () => {
-        setOpenButtonExpanded(false);
-        setNavMenuInert(true);
+    const closeMenu = (e) => {
 
-        setTimeout(() => {
-            setMenuTransition(true);
-        }, 500);
+        if (e.target.classList.contains("dismiss")) {
+            setOpenButtonExpanded(false);
+            setNavMenuInert(true);
 
-        focusOpen.current.focus();
+            setTimeout(() => {
+                setMenuTransition(true);
+            }, 500);
 
-        setGreyOut(false);
-        setPageInert(false);
+            focusOpen.current.focus();
+
+            setGreyOut(false);
+            setPageInert(false);
+        }
+
+
     }
 
+    // Handle escape to close the menu
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === "Escape") {
-                closeMenu();
+                closeMenu(e);
             }
         };
 
@@ -92,6 +99,7 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
         , [isNarrowScreen])
 
 
+
     // START OF SHOPPING CART CODE
 
     const [cartOpen, setCartOpen] = useState(false);
@@ -105,25 +113,32 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
         }
     }
 
+    // get redux value
     const cartValue = useSelector(state => state.cart);
 
+    // clear redux value
     const dispatch = useDispatch();
     const clearCart = () => {
         dispatch(remove());
     }
 
 
+
     return (
         <header className="navbar" inert={lightboxOpen}>
-            <nav>
-                <div class={greyOut ? "grey-out grey-out--shown" : "grey-out"} aria-hidden="true"></div>
+            <nav inert={cartOpen}>
+                {/* Gray out behind menu */}
+                <div class={greyOut ? "grey-out grey-out--shown dismiss" : "grey-out"} aria-hidden="true" onClick={(e) => closeMenu(e)}></div>
 
-                <div className='navbar__container'>
-                    <img src="./images/logo.svg" alt="Stylized text saying 'Sneackers', the company logo." className='navbar__logo'></img>
+                {/* Main Navbar */}
+                <div className='navbar__container' >
+                    {/* Logo */}
+                    <img src="./images/logo.svg" alt="Stylized text saying 'Sneakers', the company logo." className='navbar__logo'></img>
 
+                    {/* For screen readers */}
                     <span id="nav-label" hidden>Navigation</span>
 
-                    {/* The button for when the mobile menu is open */}
+                    {/* The button for mobile menu */}
                     <button id="btnOpen" className="navbar__open" aria-expanded={openButtonExpanded} aria-labelledby="nav-label" onClick={openMenu} ref={focusOpen}>
                         <img src="./images/icon-menu.svg" alt="" />
                     </button>
@@ -131,8 +146,8 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
                     {/* Menu, shown for both mobile and desktop */}
                     <div className="navbar__menu" role="dialog" aria-labelledby="nav-label" inert={navMenuInert} style={{ transition: menuTransition ? "none" : "" }}>
                         {/* Button hidden for desktop, shown on mobile */}
-                        <button id="btnClose" className="navbar__close" aria-label="Close" onClick={closeMenu} ref={focusClose}>
-                            <img src="./images/icon-close.svg" alt="" />
+                        <button id="btnClose" className="navbar__close dismiss" aria-label="Close" onClick={(e) => closeMenu(e)} ref={focusClose}>
+                            <img src="./images/icon-close.svg" alt="" className='dismiss' />
                         </button>
 
                         {/* Menu, hidden for mobile until opened, shown for desktop */}
@@ -152,8 +167,9 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
             <div className="navbar__personal" inert={pageInert}>
                 <button id="cart-btn-open" className="navbar__cart-btn" aria-label={cartOpen ? "Close shopping cart." : "Open shopping cart."} onClick={toggleCart}>
                     <img src="./images/icon-cart.svg" alt=""></img>
+                    {/* Value in the shopping cart shown by the image */}
                     {cartValue > 0 ? (
-                        <span className='navbar__cart-btn--value'>{cartValue}</span>
+                        <span className='navbar__cart-btn--value' aria-hidden="true">{cartValue}</span>
                     ) : (
                         <></>
                     )}
@@ -162,8 +178,9 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
                 <button id="profile" className="navbar__profile" aria-label='Open user profile'>
                     <img src="./images/image-avatar.png" alt=""></img>
                 </button>
+
                 {/* Open cart */}
-                <div className={cartOpen ? "cart cart--open" : "cart"}>
+                <div className={cartOpen ? "cart cart--open" : "cart"} aria-hidden={!cartOpen}>
                     <h2 className='cart__heading'>Cart</h2>
                     <div className='cart__divider'></div>
                     {cartValue > 0 ? (
@@ -174,7 +191,7 @@ function Header({ pageInert, setPageInert, lightboxOpen }) {
                                     <p>Fall Limited Edition Sneakers</p>
                                     <p>&#36;125.00 x {cartValue} <span className='cart__text--bold'>&#36;{cartValue * 125}.00</span></p>
                                 </div>
-                                <button className='cart__delete' onClick={clearCart}>
+                                <button className='cart__delete' onClick={clearCart} aria-label='Clear cart'>
                                     <img src='./images/icon-delete.svg' alt='' />
                                 </button>
                             </div>

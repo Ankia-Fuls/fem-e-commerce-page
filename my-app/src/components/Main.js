@@ -166,25 +166,27 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
     return (
         <>
             <main inert={pageInert}>
+                {/* Gallery Section */}
                 <section className="gallery" inert={lightboxOpen} aria-labelledby="gallery-heading">
                     <h1 id="gallery-heading" hidden >Gallery</h1>
                     <div className="gallery__main">
                         <img
                             src={images[currentIndex].src} alt={images[currentIndex].alt}
+                            className="image-hover"
                             onClick={(e) => openLightbox(e)}
                             ref={focusElement}
                             role="button" tabindex="0"
                             onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { openLightbox(e) } }} />
-                        <button className="navigation_button navigation_button--left" onClick={prevImg}>
+                        <button className="navigation_button navigation_button--left" onClick={prevImg} aria-label='Previous Image'>
                             <img src="./images/icon-previous.svg" alt="" />
                         </button>
-                        <button className="navigation_button navigation_button--right" onClick={nextImg}>
+                        <button className="navigation_button navigation_button--right" onClick={nextImg} aria-label='Next Image'>
                             <img src="./images/icon-next.svg" alt="" />
                         </button>
                     </div>
                     <div className="gallery__previews">
                         {thumbnails.map((item, index) => (
-                            <div key={index} className="thumbnail_container">
+                            <div key={index} className="thumbnail_container image-hover">
                                 <img
                                     src={item.src} alt={item.alt} id={index}
                                     className={classnameList[index]}
@@ -198,25 +200,25 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                     </div>
                 </section>
 
+                {/* The lightbox */}
                 {lightboxOpen && (
 
-                    <aside className="lightbox dismiss" role="dialog"
-                        aria-modal="true" onClick={closeLightbox}>
+                    <aside className="lightbox dismiss" role="dialog" aria-modal="true" onClick={closeLightbox}>
                         <div className="lightbox__main">
-                            <button className="lightbox__dismiss dismiss" onClick={closeLightbox} autoFocus>
+                            <button className="lightbox__dismiss dismiss" onClick={closeLightbox} autoFocus aria-label='Close'>
                                 <img src="./images/icon-close.svg" alt="" className="dismiss" />
                             </button>
                             <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-                            <button className="navigation_button-lightbox navigation_button-lightbox--left" onClick={prevImg} >
+                            <button className="navigation_button-lightbox navigation_button-lightbox--left" onClick={prevImg} aria-label='Previous Image'>
                                 <img src="./images/icon-previous.svg" alt="" />
                             </button>
-                            <button className="navigation_button-lightbox navigation_button-lightbox--right" onClick={nextImg}>
+                            <button className="navigation_button-lightbox navigation_button-lightbox--right" onClick={nextImg} aria-label='Next Image'>
                                 <img src="./images/icon-next.svg" alt="" />
                             </button>
                         </div>
-                        <div className="lightbox__previews">
+                        <div className="lightbox__previews ">
                             {thumbnails.map((item, index) => (
-                                <div key={index} className="thumbnail_container" >
+                                <div key={index} className="thumbnail_container image-hover" >
                                     <img
                                         src={item.src} alt={item.alt} id={index}
                                         className={classnameList[index]}
@@ -231,6 +233,7 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                     </aside>
                 )}
 
+                {/* Details Section */}
                 <section aria-labelledby="product-details" className="product" inert={lightboxOpen}>
                     <h2 className="product__brand">Sneaker Company</h2>
                     <h1 id="product-details" className="product__name">Fall Limited Edition Sneakers</h1>
@@ -242,15 +245,15 @@ function Main({ pageInert, setPageInert, lightboxOpen, setLightboxOpen }) {
                     </div>
                     <div className="product__container">
                         <div className="product__cart-container">
-                            <button className="product__button" onClick={decreaseCount}>
+                            <button className="product__button" onClick={decreaseCount} aria-label='Decrease Amount'>
                                 <img src="./images/icon-minus.svg" alt="" />
                             </button>
                             <span className="product__amount">{cartValue}</span>
-                            <button className="product__button" onClick={increaseCount}>
+                            <button className="product__button" onClick={increaseCount} aria-label='Increase Amount'>
                                 <img src="./images/icon-plus.svg" alt="" />
                             </button>
                         </div>
-                        <button className="product__add-to-cart" onClick={updateCart}>
+                        <button className="product__add-to-cart" onClick={updateCart} >
                             <img src="./images/icon-cart.svg" alt="" />
                             Add to cart
                         </button>
