@@ -60,6 +60,11 @@ body {
 
 // Navbar
 
+nav {
+    height: 100%;
+    margin-block: auto;
+}
+
 .navbar {
     display: flex;
     align-items: center;
@@ -71,12 +76,19 @@ body {
 
     @media only screen and (min-width: $med) {
         border-bottom: 0.0625rem solid var(--grayish-blue-2);
-        padding: 1.8rem 0;
+        // padding: 1.8rem 0;
+        padding: 0;
+        height: 6.875rem;
+        margin-block: auto;
     }
 
     &__container {
+        height: 100%;
+
         display: flex;
+        align-items: center;
         flex-direction: row-reverse;
+
         gap: 0.875rem;
 
         @media only screen and (min-width: $med) {
@@ -87,10 +99,6 @@ body {
         @media only screen and (min-width: $lg) {
             gap: 3.4375rem;
         }
-    }
-
-    &__logo {
-        height: 100%;
     }
 
     button {
@@ -149,6 +157,10 @@ body {
     &__menu {
         z-index: 2;
 
+        height: 100%;
+
+
+
         @media only screen and (max-width: $med-lower) {
             //mobile
             position: fixed; //fixes position, removes from flow, parent element effectively entire page
@@ -186,8 +198,11 @@ body {
         align-items: left;
         gap: 1.45rem;
 
+        height: 100%;
+
         @media only screen and (min-width: $med) {
             flex-direction: row;
+            align-items: center;
             gap: 1.2rem;
         }
 
@@ -198,6 +213,10 @@ body {
 
     &__item {
         list-style-type: none;
+
+        @media only screen and (min-width: $med) {
+            height: 100%;
+        }
     }
 
     &__link {
@@ -206,12 +225,16 @@ body {
         font-weight: 700;
         font-size: 1.05rem;
 
-        transition: color 100ms ease-in;
+        height: 100%;
+
 
         @media only screen and (min-width: $med) {
             color: var(--dark-grayish-blue);
             font-weight: 400;
             font-size: 0.8rem;
+
+            display: flex;
+            align-items: center;
         }
 
         @media only screen and (min-width: $lg) {
@@ -220,7 +243,7 @@ body {
 
         &:hover {
             cursor: pointer;
-            color: var(--orange);
+            border-bottom: 3px solid var(--orange);
         }
     }
 
@@ -255,6 +278,15 @@ body {
         @media only screen and (min-width: $lg) {
             width: 3.125rem;
         }
+
+        img {
+            &:hover {
+                outline: 2px solid var(--orange);
+                border-radius: 50%;
+            }
+        }
+
+
     }
 
     &__cart-btn {
@@ -489,19 +521,23 @@ main {
 
 .thumbnail_container {
     aspect-ratio: 1 / 1;
-    border: 2px solid transparent;
+    outline: 2px solid transparent;
     border-radius: 0.625rem;
+    background-color: var(--white);
 }
 
 .thumbnail_container:has(.gallery__thumbnail--chosen) {
-    border: 2px solid var(--orange);
+    outline: 2px solid var(--orange);
     border-radius: 0.625rem;
     background-color: var(--white);
     // height: 5.5625rem;
 }
 
-.navigation_button {
+.thumbnail_container img:hover {
+    opacity: 0.3;
+}
 
+.navigation_button {
     display: block;
     position: absolute;
     top: 50%;
@@ -516,6 +552,10 @@ main {
 
     &:hover {
         cursor: pointer;
+
+        img {
+            filter: brightness(0) saturate(100%) invert(54%) sepia(68%) saturate(1809%) hue-rotate(347deg) brightness(101%) contrast(102%);
+        }
     }
 
     img {
@@ -561,6 +601,12 @@ main {
 
     &:hover {
         cursor: pointer;
+
+        img {
+            filter: brightness(0) saturate(100%) invert(54%) sepia(68%) saturate(1809%) hue-rotate(347deg) brightness(101%) contrast(102%);
+        }
+
+
     }
 
     img {
@@ -635,6 +681,10 @@ main {
 
         &:hover {
             cursor: pointer;
+
+            img {
+                filter: brightness(0) saturate(100%) invert(54%) sepia(68%) saturate(1809%) hue-rotate(347deg) brightness(101%) contrast(102%);
+            }
         }
 
         img {
@@ -844,6 +894,11 @@ main {
         &:hover {
             cursor: pointer;
         }
+
+        &:active {
+            opacity: 0.7;
+        }
+
     }
 
     &__amount {
@@ -892,6 +947,10 @@ main {
 
         &:hover {
             cursor: pointer;
+        }
+
+        &:active {
+            opacity: 0.7;
         }
     }
 }
