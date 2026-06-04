@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fem-e-commerce-page/static/css/main.365b56a9.css",
+    "main.js": "/fem-e-commerce-page/static/js/main.3e105fb7.js",
+    "index.html": "/fem-e-commerce-page/index.html",
+    "main.365b56a9.css.map": "/fem-e-commerce-page/static/css/main.365b56a9.css.map",
+    "main.3e105fb7.js.map": "/fem-e-commerce-page/static/js/main.3e105fb7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.365b56a9.css",
+    "static/js/main.3e105fb7.js"
+  ]
+}
