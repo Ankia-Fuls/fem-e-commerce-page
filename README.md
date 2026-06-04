@@ -34,8 +34,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repo](https://github.com/Ankia-Fuls/fem-e-commerce-page)
+- Live Site URL: [GitHub Pages](https://ankia-fuls.github.io/fem-e-commerce-page/)
 
 ## My process
 
@@ -93,6 +93,8 @@ I would like to add a functionality to the gallery in the future where you can s
 - [Event keys in React](https://stackoverflow.com/questions/27827234/how-to-handle-the-onkeypress-event-in-reactjs) - This helped me see how to handle event keys and keydown events in React to add accessibility to the lightbox photos.
 - [Using escape to close modal](https://medium.com/@priyaeswaran/beginners-guide-to-closing-a-modal-in-react-on-outside-click-and-escape-keypress-9812b1d48b84) - This helped show me how to set up event listeners for a modal to close it with the escape key.
 - [Return focus](https://dev.to/samabaasi/mastering-useref-why-it-doesnt-trigger-re-renders-and-how-it-persists-across-re-renders-1l2b) - This showed me how to use useRef to set reference points to reset focus on closing the modal
+- [Swiping Functionality](https://ptuszak.medium.com/adding-swipe-functionality-using-vanilla-javascript-ff21def11af0) - This was the link I would have used to incorporate swiping if I had the time.
+- [Accessible Lightbox guide](https://codeaccessible.com/codepatterns/lightbox/) - Another resource on making a lightbox accessible.
 
 ## Author
 
